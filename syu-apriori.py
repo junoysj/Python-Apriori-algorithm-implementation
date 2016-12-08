@@ -14,7 +14,7 @@ def get_one_itemset(dataset_file):
             itemset.add(frozenset([item]))  
     return itemset, transactions
 
-
+#get frequent 1-itemsets:
 def get_freq_one_itemsets(one_itemset, transactions, min_sup):
     freq_one_itemset = set()
     for item in one_itemset:
@@ -27,7 +27,7 @@ def get_freq_one_itemsets(one_itemset, transactions, min_sup):
 
     return freq_one_itemset
 
-
+# generate k+1-itemset:
 def apriori_gen(currentL, k):
     Ck = []
     for i in currentL:
@@ -39,18 +39,6 @@ def apriori_gen(currentL, k):
         Ck_without_duplicate = set(Ck)
 
     return list(Ck_without_duplicate)
-'''    
-# I tried to implement this part, but then the final output only contains frequent 1-itemsets. Need more time to debug...
-# get 'k-1' element subsets of a candidate
-def findsubsets(c,k):
-    return set(itertools.combinations(c, k-1))
-
-def has_infrequent_subset(c,currentL, k):
-    for s in findsubsets(c,k):
-        if s not in currentL:
-            return True
-    return False'''
-
 
 def main():
     optparser = OptionParser()
